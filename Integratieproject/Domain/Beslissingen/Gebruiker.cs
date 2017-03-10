@@ -11,6 +11,6 @@ namespace Domain
     {
         public int Id { get; set; }
         public List<Eigenschap> Eigenschappen { get; set; }
-
+        public List<>
     }
 }

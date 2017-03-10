@@ -6,14 +6,15 @@ using System.Threading.Tasks;
 
 namespace Domain.Vragen
 {
-    public class Niveau
+    class Vraagtstelling
     {
+        public String Text { get; set; }
         public int Id { get; set; }
 
-        public Niveau(int id)
+        public Vraagtstelling(string text, int id)
         {
+            Text = text;
             Id = id;
         }
     }
 }
- 

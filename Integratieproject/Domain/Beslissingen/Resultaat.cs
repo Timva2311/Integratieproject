@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Domain.Beslissingen
 {
-    class Resultaat
+    public class Resultaat
     {
     }
 }

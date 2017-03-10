@@ -6,7 +6,9 @@ using System.Threading.Tasks;
 
 namespace Domain.Partijen
 {
-    class Thema
+    public class Thema
     {
+        public int Id { get; set; }
+        public String Name { get; set; }
     }
 }

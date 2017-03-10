@@ -56,7 +56,7 @@
     <Compile Include="Vragen\TestAntwoord.cs" />
     <Compile Include="Vragen\TestVraag.cs" />
     <Compile Include="Vragen\Verhaallijn.cs" />
-    <Compile Include="Vragen\Vraagstelling.cs" />
+    <Compile Include="Vragen\Vraagtstelling.cs" />
   </ItemGroup>
   <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

@@ -40,8 +40,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Beslissingen\Eigenschap.cs" />
     <Compile Include="Beslissingen\Gebruiker.cs" />
     <Compile Include="Beslissingen\Resultaat.cs" />
+    <Compile Include="Beslissingen\Status.cs" />
     <Compile Include="Partijen\Gemeente.cs" />
     <Compile Include="Partijen\LokalePartij.cs" />
     <Compile Include="Partijen\NationalePartij.cs" />

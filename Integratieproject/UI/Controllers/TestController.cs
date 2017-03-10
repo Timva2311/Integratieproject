@@ -1,10 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Dynamic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using BL;
 using Domain.Vragen;
+using UI.Models;
 
 namespace UI.Controllers
 {
@@ -12,7 +14,6 @@ namespace UI.Controllers
     {
         private VraagManager _mng;
         private int vraagCounter;
-        private TestVraag currentVraag;
         public TestController()
         {
             _mng = new VraagManager();
@@ -21,8 +22,10 @@ namespace UI.Controllers
         // GET: Test
         public ActionResult Test()
         {
-            currentVraag = _mng.GetNextQuestion(vraagCounter);
-            return View(currentVraag);
+            TestViewModel mymodel = new TestViewModel();
+            mymodel.CurrentVraag = _mng.GetNextQuestion(vraagCounter);
+            if(vraagCounter != 0){/*Resultaat meegeven*/}
+            return View(mymodel);
         }
     }
 }

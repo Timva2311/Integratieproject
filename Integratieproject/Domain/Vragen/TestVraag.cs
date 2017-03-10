@@ -9,10 +9,10 @@ using Domain.Partijen;
 
 namespace Domain.Vragen
 {
-    public class TestVraag : Vraagstelling
+    public class TestVraag : Vraagtstelling
     {
-        TestAntwoord Antwoord1 { get; set; }
-        TestAntwoord Antwoord2 { get; set; }
+        public TestAntwoord Antwoord1 { get; set; }
+        public TestAntwoord Antwoord2 { get; set; }
         Thema Thema { get; set; }
         Niveau Niveau { get; set; }
         int Id { get; set; }
@@ -23,7 +23,6 @@ namespace Domain.Vragen
             Antwoord2 = antwoord2;
             Thema = thema;
             Niveau = niveau;
-            Id = id;
         }
     }
 }

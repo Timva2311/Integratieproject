@@ -1,7 +1,60 @@
-﻿@model Domain.Vragen.TestVraag
+﻿@model UI.Models.TestViewModel
 @{
     ViewBag.Title = "Test";
 }
 
 <h2>Test</h2>
+<div class="resultaat">
+    <h3>@Html.DisplayFor(mode => Model.CurrentResultaat.Text)</h3>
+</div>
+<div class="vraag row">
+    <h3>@Html.DisplayFor(model => Model.CurrentVraag.Text)</h3>
+</div>
+<div class="antwoord row">
+    <button class="btn btn-primary">
+        <p class="lead">@Html.DisplayFor(model => model.CurrentVraag.Antwoord1.Text)</p>
+        <h4>Voordelen</h4>
+        @foreach (var item in Model.CurrentVraag.Antwoord1.Voordelen)
+        {
+            <ul class="list-unstyled">
+                <li style="text-align: left">
+                    <i class="fa fa-plus"></i>@Html.DisplayFor(modelItem => item)
+                </li>
+            </ul>
+        }
+        <h4>Nadelen</h4>
+        @foreach (var item in Model.CurrentVraag.Antwoord1.Nadelen)
+        {
+            <ul class="list-unstyled">
+                <li style="text-align: left">
+                    <i class="fa fa-minus"></i>@Html.DisplayFor(modelItem => item)
+                </li>
+            </ul>
+        }
+
+    </button>
+    <button class="btn btn-primary">
+        <p class="lead">@Html.DisplayFor(model => model.CurrentVraag.Antwoord2.Text)</p>
+        <h4>Voordelen</h4>
+        @foreach (var item in Model.CurrentVraag.Antwoord2.Voordelen)
+        {
+            <ul class="list-unstyled">
+                <li style="text-align: left">
+                    <i class="fa fa-plus"></i>@Html.DisplayFor(modelItem => item)
+                </li>
+            </ul>
+        }
+        <h4>Nadelen</h4>
+        @foreach (var item in Model.CurrentVraag.Antwoord2.Nadelen)
+        {
+            <ul class="list-unstyled">
+                <li style="text-align: left">
+                    <i class="fa fa-minus"></i>@Html.DisplayFor(modelItem => item)
+                </li>
+            </ul>
+        }
+
+    </button>
+</div> 
+
 

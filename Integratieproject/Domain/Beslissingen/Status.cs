@@ -6,11 +6,10 @@ using System.Threading.Tasks;
 
 namespace Domain.Beslissingen
 {
-    public class Resultaat
+    public enum Status
     {
-        public int Id { get; set; }
-        public String Text { get; set; }
-        public double Kans { get; set; }
-        
+        TRUE,
+        FALSE,
+        UNKNOWN
     }
 }

@@ -12,7 +12,9 @@ namespace Domain.Vragen
         public String Text { get; set; }
         public List<String> Voordelen { get; set; }
         public List<String> Nadelen { get; set; }
-        public List<Resultaat> Resultaten { get; set; }
+        public Resultaat SuccesResultaat { get; set; }
+        public Resultaat FaalResultaat { get; set; }
+        public Resultaat EindResultaat { get; set; }
 
         public TestAntwoord(string text, List<string> voordelen, List<string> nadelen)
         {

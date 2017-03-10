@@ -3,14 +3,13 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Domain.Beslissingen;
 
-namespace Domain
+namespace Domain.Beslissingen
 {
-    public class Gebruiker
+    public class Eigenschap
     {
         public int Id { get; set; }
-        public List<Eigenschap> Eigenschappen { get; set; }
-
+        public String Naam { get; set; }
+        public Status Status { get; set; }
     }
 }

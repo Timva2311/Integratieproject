@@ -10,7 +10,7 @@ namespace BL
 {
     public class VraagManager
     {
-        private TestRepository _rep;
+        private TestRepository _rep { get; set; }
 
         public VraagManager()
         {

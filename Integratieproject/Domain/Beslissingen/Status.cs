@@ -8,8 +8,8 @@ namespace Domain.Beslissingen
 {
     public enum Status
     {
-        TRUE,
-        FALSE,
-        UNKNOWN
+        TRUE = 1,
+        FALSE = 2,
+        UNKNOWN = 3
     }
 }

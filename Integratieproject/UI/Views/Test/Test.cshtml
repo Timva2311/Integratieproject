@@ -3,58 +3,95 @@
     ViewBag.Title = "Test";
 }
 
-<h2>Test</h2>
-<div class="resultaat">
-    <h3>@Html.DisplayFor(mode => Model.CurrentResultaat.Text)</h3>
+<div class="thema">
+    <h2>Thema: @Html.DisplayFor(mode => Model.CurrentVraag.Thema.Name)</h2>
 </div>
+<div class="thema">
+    <h4>Gebruikerseigenschappen: @foreach (var item in Model.CurrentGebruiker.Eigenschappen)
+    {
+        <ul>
+            <li style="text-align: left">
+                @Html.DisplayFor(modelItem => item.Naam) : @Html.DisplayFor(modelItem => item.Status)
+            </li>
+        </ul>
+    }</h4>
+</div>
+@if (Model.CurrentResultaat.Text != null)
+{
+    <div class="resultaat">
+        <h3>Resultaat : @Html.DisplayFor(mode => Model.CurrentResultaat.Text) (kans voor dit resultaat : @Html.DisplayFor(mode => Model.CurrentResultaat.Kans) )</h3>
+    </div>
+    }
 <div class="vraag row">
-    <h3>@Html.DisplayFor(model => Model.CurrentVraag.Text)</h3>
+    <h3>Vraag @Html.DisplayFor(mode => Model.CurrentVraag.Niveau.Id): @Html.DisplayFor(model => Model.CurrentVraag.Text)</h3>
 </div>
-<div class="antwoord row">
-    <button class="btn btn-primary">
-        <p class="lead">@Html.DisplayFor(model => model.CurrentVraag.Antwoord1.Text)</p>
-        <h4>Voordelen</h4>
-        @foreach (var item in Model.CurrentVraag.Antwoord1.Voordelen)
-        {
-            <ul class="list-unstyled">
-                <li style="text-align: left">
-                    <i class="fa fa-plus"></i>@Html.DisplayFor(modelItem => item)
-                </li>
-            </ul>
-        }
-        <h4>Nadelen</h4>
-        @foreach (var item in Model.CurrentVraag.Antwoord1.Nadelen)
-        {
-            <ul class="list-unstyled">
-                <li style="text-align: left">
-                    <i class="fa fa-minus"></i>@Html.DisplayFor(modelItem => item)
-                </li>
-            </ul>
-        }
 
-    </button>
-    <button class="btn btn-primary">
-        <p class="lead">@Html.DisplayFor(model => model.CurrentVraag.Antwoord2.Text)</p>
-        <h4>Voordelen</h4>
-        @foreach (var item in Model.CurrentVraag.Antwoord2.Voordelen)
-        {
-            <ul class="list-unstyled">
-                <li style="text-align: left">
-                    <i class="fa fa-plus"></i>@Html.DisplayFor(modelItem => item)
-                </li>
-            </ul>
-        }
-        <h4>Nadelen</h4>
-        @foreach (var item in Model.CurrentVraag.Antwoord2.Nadelen)
-        {
-            <ul class="list-unstyled">
-                <li style="text-align: left">
-                    <i class="fa fa-minus"></i>@Html.DisplayFor(modelItem => item)
-                </li>
-            </ul>
-        }
+<div class="cont">
+    @using (Html.BeginForm("NextQuestion", "Test", new { keuze = true }, FormMethod.Post, null))
+    {
+        <button class="test">
 
-    </button>
-</div> 
+            <p class="lead">@Html.DisplayFor(model => model.CurrentVraag.Antwoord1.Text)</p>
+            <h4>Voordelen</h4>
+            @foreach (var item in Model.CurrentVraag.Antwoord1.Voordelen)
+                {
+                <ul class="list-unstyled">
+                    <li style="text-align: left">
+                        <i class="fa fa-plus"></i>@Html.DisplayFor(modelItem => item)
+                    </li>
+                </ul>
+            }
+            <h4>Nadelen</h4>
+            @foreach (var item in Model.CurrentVraag.Antwoord1.Nadelen)
+                {
+                <ul class="list-unstyled">
+                    <li style="text-align: left">
+                        <i class="fa fa-minus"></i>@Html.DisplayFor(modelItem => item)
+                    </li>
+                </ul>
+            }
 
+        </button>
+    }
+    </div>
+<div class="cont">
+    @using (Html.BeginForm("NextQuestion", "Test", new { keuze = false }, FormMethod.Post, null))
+    {
+        <button class="test">
+
+            <p class="lead">@Html.DisplayFor(model => model.CurrentVraag.Antwoord2.Text)</p>
+            <h4>Voordelen</h4>
+            @foreach (var item in Model.CurrentVraag.Antwoord2.Voordelen)
+                {
+                <ul class="list-unstyled">
+                    <li style="text-align: left">
+                        <i class="fa fa-plus"></i>@Html.DisplayFor(modelItem => item)
+                    </li>
+                </ul>
+            }
+            <h4>Nadelen</h4>
+            @foreach (var item in Model.CurrentVraag.Antwoord2.Nadelen)
+                {
+                <ul class="list-unstyled">
+                    <li style="text-align: left">
+                        <i class="fa fa-minus"></i>@Html.DisplayFor(modelItem => item)
+                    </li>
+                </ul>
+            }
+        </button>
+    }
+    </div>
+<style>
+    .cont {
+        display:inline-flex;
+        flex-direction: row;
+        flex-wrap:wrap
+    }
+    .test{
+        height: 300px;
+        width: 450px;
+
+    }
+
+</style>
 

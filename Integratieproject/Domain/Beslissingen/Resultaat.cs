@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Domain.Vragen;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -11,6 +12,12 @@ namespace Domain.Beslissingen
         public int Id { get; set; }
         public String Text { get; set; }
         public double Kans { get; set; }
-        public Dictionary<String, Status> EigenschappenToUpdate { get; set; }
+        public List<Eigenschap> EigenschappenToUpdate { get; set; }
+        public TestVraag VolgendeVraag { get; set; }
+
+        public Resultaat()
+        {
+            EigenschappenToUpdate = new List<Eigenschap>();
+        }
     }
 }

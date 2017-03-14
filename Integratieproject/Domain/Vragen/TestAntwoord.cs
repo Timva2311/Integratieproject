@@ -21,6 +21,9 @@ namespace Domain.Vragen
             Nadelen = nadelen;
             Voordelen = voordelen;
             Text = text;
+            SuccesResultaat = new Resultaat();
+            FaalResultaat = new Resultaat();
+            EindResultaat = new Resultaat();
         }
     }
 }

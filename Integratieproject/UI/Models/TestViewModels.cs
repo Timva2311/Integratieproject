@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using Domain.Beslissingen;
 using Domain.Vragen;
+using Domain;
 
 namespace UI.Models
 {
@@ -11,13 +12,17 @@ namespace UI.Models
     {
         public TestVraag CurrentVraag { get; set; }
         public Resultaat CurrentResultaat { get; set; }
+        public Gebruiker CurrentGebruiker { get; set; }
 
-        public TestViewModel(TestVraag currentVraag, Resultaat currentResultaat)
+        public TestViewModel(TestVraag currentVraag, Resultaat currentResultaat, Gebruiker gebruiker)
         {
             CurrentVraag = currentVraag;
             CurrentResultaat = currentResultaat;
+            CurrentGebruiker = gebruiker;
         }
 
-        public TestViewModel() { }
+        public TestViewModel() {
+            CurrentResultaat = new Resultaat();
+        }
     }
 }

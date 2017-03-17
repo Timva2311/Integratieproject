@@ -13,12 +13,10 @@ namespace DAL
     public class TestRepository
     {
         private List<TestVraag> vragen;
-        private static Gebruiker gebruiker = new Gebruiker(1);
+        private static Gebruiker gebruiker;
 
         public TestRepository()
         {
-            //gebruiker
-            gebruiker.Eigenschappen.Add(new Eigenschap(1, "kinderen", Status.FALSE));
 
             //vraag 1
             Thema werk = new Thema();
@@ -270,9 +268,15 @@ namespace DAL
             gebruiker.Eigenschappen.Add(item);
             return gebruiker;
         }
-
         public Gebruiker GetUser()
         {
+            return gebruiker;
+        }
+
+        public Gebruiker NewUser()
+        {
+            gebruiker = new Gebruiker(1);
+            gebruiker.Eigenschappen.Add(new Eigenschap(1, "kinderen", Status.FALSE));
             return gebruiker;
         }
 

@@ -27,7 +27,7 @@
 </div>
 
 <div class="cont">
-    @using (Html.BeginForm("NextQuestion", "Test", new { keuze = true }, FormMethod.Post, null))
+    @using (Html.BeginForm(MVC.Test.NextQuestion(1), FormMethod.Post))
     {
         <button class="test">
 
@@ -55,7 +55,7 @@
     }
     </div>
 <div class="cont">
-    @using (Html.BeginForm("NextQuestion", "Test", new { keuze = false }, FormMethod.Post, null))
+    @using (Html.BeginForm(MVC.Test.NextQuestion(2), FormMethod.Post))
     {
         <button class="test">
 

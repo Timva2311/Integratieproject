@@ -265,6 +265,11 @@ namespace DAL
             vragen.Add(vraag8);
         }
 
+        public Gebruiker ResetUser()
+        {
+            return gebruiker = new Gebruiker(1);
+        }
+
         public Gebruiker AddNewUserProp(Eigenschap item)
         {
             gebruiker.Eigenschappen.Add(item);

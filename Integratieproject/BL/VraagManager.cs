@@ -33,5 +33,10 @@ namespace BL
         {
             return _rep.AddNewUserProp(item);
         }
+
+        public Gebruiker ResetUser()
+        {
+            return _rep.ResetUser();
+        }
     }
 }

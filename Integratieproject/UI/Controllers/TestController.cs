@@ -27,6 +27,14 @@ namespace UI.Controllers
         // GET: Test
         public ActionResult Test()
         {
+            if (_mng.GetNextQuestion(niveauCounter + 1) == null)
+            {
+
+                mymodel.CurrentVraag = _mng.GetNextQuestion(niveauCounter);
+                niveauCounter = 1;
+                mymodel.CurrentGebruiker = _mng.ResetUser();
+                return RedirectToAction("Index", "Home");
+            }
             mymodel.CurrentVraag = _mng.GetNextQuestion(niveauCounter);
             return View(mymodel);
         }
@@ -36,7 +44,11 @@ namespace UI.Controllers
             double d = r.NextDouble() * (1 - 0) + 0;
             if (_mng.GetNextQuestion(niveauCounter + 1) == null)
             {
-                return RedirectToAction("Index", "Home");
+                
+                mymodel.CurrentVraag = _mng.GetNextQuestion(niveauCounter);
+                TestViewModel m = mymodel;
+                TempData["mod"] = m;
+                return RedirectToAction("Index", "End", "m");
             }
             mymodel.CurrentVraag = _mng.GetNextQuestion(niveauCounter + 1);
             if (keuze==true)

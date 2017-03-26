@@ -28,8 +28,15 @@ namespace UI.Controllers
         // GET: Test
         public virtual ActionResult Test()
         {
-            mymodel.CurrentGebruiker = _mng.NewUser();
-            mymodel.CurrentVraag = _mng.GetQuestion(niveauCounter);
+            if (_mng.GetNextQuestion(niveauCounter + 1) == null)
+            {
+
+                mymodel.CurrentVraag = _mng.GetNextQuestion(niveauCounter);
+                niveauCounter = 1;
+                mymodel.CurrentGebruiker = _mng.ResetUser();
+                return RedirectToAction("Index", "Home");
+            }
+            mymodel.CurrentVraag = _mng.GetNextQuestion(niveauCounter);
             return View(mymodel);
         }
         public virtual ActionResult NextQuestion(int keuze)

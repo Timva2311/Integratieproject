@@ -1,0 +1,31 @@
+﻿@model UI.Models.TestViewModel
+@{
+    ViewBag.Title = "Test";
+}
+
+<div class="titel">
+    <h1 style="text-align: center">Dit is het eindpagina</h1>
+</div>
+
+<div class="thema">
+    <h4>
+        Gebruikerseigenschappen: @foreach (var item in Model.CurrentGebruiker.Eigenschappen)
+        {
+            <ul>
+                <li style="text-align: left">
+                    @Html.DisplayFor(modelItem => item.Naam) : @Html.DisplayFor(modelItem => item.Status)
+                </li>
+            </ul>
+        }
+    </h4>
+</div>
+@if (Model.CurrentResultaat.Text != null)
+{
+    <div class="resultaat">
+        <h3>Resultaat : @Html.DisplayFor(mode => Model.CurrentResultaat.Text) (kans voor dit resultaat : @Html.DisplayFor(mode => Model.CurrentResultaat.Kans) )</h3>
+    </div>
+}
+<div class="vraag row">
+    <h3>Vraag @Html.DisplayFor(mode => Model.CurrentVraag.Niveau.Id): @Html.DisplayFor(model => Model.CurrentVraag.Text)</h3>
+</div>
+<p><a href="@Url.Action("Test","Test")" class="btn btn-primary btn-lg">Speel opnieuw &raquo;</a></p>

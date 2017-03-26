@@ -7,11 +7,11 @@ using UI.Models;
 
 namespace UI.Controllers
 {
-    public class EndController : Controller
+    public partial class EndController : Controller
     {
-      
+
         // GET: End
-        public ActionResult Index()
+        public virtual ActionResult Index()
         {
             TestViewModel mod = (TestViewModel)TempData["mod"];
             return View(mod);

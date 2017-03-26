@@ -23,37 +23,44 @@ namespace UI.Controllers
             _mng = new VraagManager();
             mymodel = new TestViewModel();
             mymodel.CurrentGebruiker = _mng.GetUser();
-
         }
         // GET: Test
         public virtual ActionResult Test()
         {
-            if (_mng.GetNextQuestion(niveauCounter + 1) == null)
-            {
-
-                mymodel.CurrentVraag = _mng.GetNextQuestion(niveauCounter);
-                niveauCounter = 1;
-                mymodel.CurrentGebruiker = _mng.ResetUser();
-                return RedirectToAction("Index", "Home");
-            }
-            mymodel.CurrentVraag = _mng.GetNextQuestion(niveauCounter);
+            Session["BeantwoordeVragen"] = null;
+            mymodel.CurrentGebruiker = _mng.NewUser();
+            mymodel.CurrentVraag = _mng.GetQuestion(niveauCounter);
             return View(mymodel);
         }
         public virtual ActionResult NextQuestion(int keuze)
         {
+            TestAntwoord selectedAntwoord;
             Resultaat resultaat;
             Gebruiker gebruiker = mymodel.CurrentGebruiker;
             TestVraag currentVraag;
             TestVraag nextVraag;
-            if (!_mng.GetNextQuestion(niveauCounter, keuze, out resultaat, out nextVraag,out currentVraag,
+
+            mymodel.BeantwoordeVragen = (Dictionary<String, String>)Session["BeantwoordeVragen"];
+            if (mymodel.BeantwoordeVragen == null)
+            {
+                mymodel.BeantwoordeVragen = new Dictionary<string, string>();
+            }
+
+            if (!_mng.GetNextQuestion(niveauCounter, keuze, out selectedAntwoord, out resultaat, out nextVraag,out currentVraag,
                 out gebruiker))
             {
+                mymodel.CurrentVraag = currentVraag;
+                TempData["mod"] = mymodel;
                 niveauCounter = 1;
-                return RedirectToAction(MVC.Home.Index());
+                return RedirectToAction("Index", "End", mymodel);
             }
             niveauCounter++;
             mymodel.CurrentVraag = nextVraag;
+            mymodel.CurrentResultaat = resultaat;
             Session["Gebruiker"] = mymodel.CurrentGebruiker;
+            mymodel.BeantwoordeVragen.Add(currentVraag.Text, selectedAntwoord.Text);
+            Session["BeantwoordeVragen"] = mymodel.BeantwoordeVragen;
+            _mng.AddBeantwoordeVraag(currentVraag.Text, selectedAntwoord.Text);
             return View(Views.Test, mymodel);
         }
     }

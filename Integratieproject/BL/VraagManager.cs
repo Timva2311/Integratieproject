@@ -19,11 +19,11 @@ namespace BL
             _rep = new TestRepository();
         }
 
-        public bool GetNextQuestion(int niveau, int keuze, out Resultaat resultaat, out TestVraag nextVraag ,out TestVraag currentVraag, out Gebruiker gebruiker)
+        public bool GetNextQuestion(int niveau, int keuze, out TestAntwoord selectedAntwoord, out Resultaat resultaat, out TestVraag nextVraag, out TestVraag currentVraag, out Gebruiker gebruiker)
         {
             resultaat = null;
             gebruiker = null;
-            TestAntwoord selectedAntwoord;
+            selectedAntwoord = null;
             currentVraag = GetVraagEnAntwoord(niveau, keuze, out selectedAntwoord);
             nextVraag = _rep.GetVraagByIndex(niveau + 1);
 
@@ -102,6 +102,11 @@ namespace BL
         public TestVraag GetQuestion(int niveau)
         {
             return _rep.GetVraagByIndex(niveau);
+        }
+
+        public void AddBeantwoordeVraag(string currentVraagText, string selectedAntwoordText)
+        {
+            _rep.AddBeantwoordeVraag(currentVraagText, selectedAntwoordText);
         }
     }
 }

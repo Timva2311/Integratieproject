@@ -28,6 +28,7 @@ using T4MVC;
 public static partial class MVC
 {
     public static UI.Controllers.AccountController Account = new UI.Controllers.T4MVC_AccountController();
+    public static UI.Controllers.EndController End = new UI.Controllers.T4MVC_EndController();
     public static UI.Controllers.HomeController Home = new UI.Controllers.T4MVC_HomeController();
     public static UI.Controllers.ManageController Manage = new UI.Controllers.T4MVC_ManageController();
     public static UI.Controllers.TestController Test = new UI.Controllers.T4MVC_TestController();

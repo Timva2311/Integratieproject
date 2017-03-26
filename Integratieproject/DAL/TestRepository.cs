@@ -14,10 +14,11 @@ namespace DAL
     {
         private List<TestVraag> vragen;
         private static Gebruiker gebruiker;
+        private Dictionary<String, String> beantwoordeVragen;
 
         public TestRepository()
         {
-
+            beantwoordeVragen = new Dictionary<string, string>();
             //vraag 1
             Thema werk = new Thema();
             werk.Name = "Werk";
@@ -263,11 +264,6 @@ namespace DAL
             vragen.Add(vraag8);
         }
 
-        public Gebruiker ResetUser()
-        {
-            return gebruiker = new Gebruiker(1);
-        }
-
         public Gebruiker AddNewUserProp(Eigenschap item)
         {
             gebruiker.Eigenschappen.Add(item);
@@ -305,6 +301,16 @@ namespace DAL
                 }
             }
             return null;
+        }
+
+        public void AddBeantwoordeVraag(String vraag, String antwoord)
+        {
+            beantwoordeVragen.Add(vraag,antwoord);
+        }
+
+        public Dictionary<String, String> GetBeantwoordeVragen()
+        {
+            return beantwoordeVragen;
         }
     }
 }

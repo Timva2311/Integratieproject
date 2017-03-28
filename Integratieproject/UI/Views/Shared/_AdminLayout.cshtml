@@ -1,0 +1,43 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - My ASP.NET Application</title>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+
+</head>
+<body>
+
+<div class="container body-content">
+<div class="navbar navbar-inverse navbar-fixed-left">
+    <div>
+        <img src="http://placehold.it/139x150">
+        <h3>Jens Lintermans</h3>
+    </div>
+    <hr/>
+    <a class="navbar-brand" href="#">Admin Panel</a>
+    <ul class="nav navbar-nav">
+        <li><a href="@Url.Action("Index", "Admin")">Startpagina</a></li>
+        <li><a href="#">Personavragen</a></li>
+        <li><a href="@Url.Action("TestVragen", "Admin")">Testvragen</a></li>
+        <li><a href="#">Gebruikers</a></li>
+        <li><a href="#">Thema's</a></li>
+        <li><a href="#">Lay-out</a></li>
+        <li><a href="#">Log-out</a></li>
+    </ul>
+</div>
+@RenderBody()
+    <div class="admin">
+<hr/>
+        <footer>
+            <p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>
+        </footer>
+        </div>
+</div>
+@Scripts.Render("~/bundles/jquery")
+@Scripts.Render("~/bundles/bootstrap")
+@RenderSection("scripts", required: false)
+</body>
+</html>

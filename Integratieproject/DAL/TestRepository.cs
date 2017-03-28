@@ -16,6 +16,7 @@ namespace DAL
         private static Gebruiker gebruiker;
         private Dictionary<String, String> beantwoordeVragen;
 
+
         public TestRepository()
         {
             beantwoordeVragen = new Dictionary<string, string>();
@@ -311,6 +312,11 @@ namespace DAL
         public Dictionary<String, String> GetBeantwoordeVragen()
         {
             return beantwoordeVragen;
+        }
+
+        public List<TestVraag> GetallTestVragen()
+        {
+            return vragen;
         }
     }
 }

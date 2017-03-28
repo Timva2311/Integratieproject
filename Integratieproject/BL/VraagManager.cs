@@ -19,6 +19,11 @@ namespace BL
             _rep = new TestRepository();
         }
 
+        public List<TestVraag> GetAllTestVragen()
+        {
+           return _rep.GetallTestVragen();
+        }
+
         public bool GetNextQuestion(int niveau, int keuze, out TestAntwoord selectedAntwoord, out Resultaat resultaat, out TestVraag nextVraag, out TestVraag currentVraag, out Gebruiker gebruiker)
         {
             resultaat = null;

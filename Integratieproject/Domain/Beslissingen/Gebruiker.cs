@@ -7,7 +7,7 @@ using Domain.Beslissingen;
 
 namespace Domain
 {
-    public class Gebruiker
+    public class Gebruiker 
     {
         public int Id { get; set; }
         public HashSet<Eigenschap> Eigenschappen { get; set; }
